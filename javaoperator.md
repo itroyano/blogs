@@ -172,7 +172,8 @@ Please re-run, modify code, experiment and look at the files generated.
 Fabric8 is capable of also creating other resources in Kubernetes, via either a Builder Pattern or by reading an input template yaml.
 Take a look at these code snippets for additional experimentation:
 
-- ```
+- Building a Service with Fabric8's builders:
+  ```
   private boolean reconcileService(EchoResource resource, Context<EchoResource> context) {
     String desiredName = resource.getMetadata().getName();
 
@@ -217,9 +218,10 @@ Take a look at these code snippets for additional experimentation:
         .endOwnerReference()
         .withLabels(labels)
     .build();
-}
+  }
   ```
-- ```
+ - Parsing and applying a yaml with a Kubernetes resource: 
+  ```
   private void createFromYaml(String pathToYaml) throws FileNotFoundException {
   // Parse a yaml into a list of Kubernetes resources
   List<HasMetadata> result = client.load(new FileInputStream(pathToYaml)).get();
